@@ -9,7 +9,7 @@ public class DuplicateStringCounter {
     };
 
     public static void main(String[] args) {
-        List<String> words = generateListOfWords(100);
+        List<String> words = generateListOfWords(10);
         System.out.println("Words generated: " + words);
 
         Map<String, Integer> duplicateCounts = getDuplicatesCount(words);
@@ -30,6 +30,7 @@ public class DuplicateStringCounter {
         for (String s : stringList) {
             results.merge(s, 1, Integer::sum);
         }
+        results.entrySet().removeIf(entry -> entry.getValue() <= 1);
         return results;
     }
 }
